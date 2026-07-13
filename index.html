@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyl | Portfolio</title>
-    <!-- ĐÃ SỬA: Trỏ chính xác đến tên file không có dấu gạch dưới trong thư mục img của anh -->
+    <!-- Gắn Favicon chuẩn tên file không gạch dưới trong thư mục img -->
     <link rel="shortcut icon" href="img/kyldevlogorefineddark.png" type="image/png">
     <link rel="icon" href="img/kyldevlogorefineddark.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<body>
+    <header>
         <nav>
             <a href="#home" class="logo logo--img">
                 <img src="img/kyldevlogorefineddark.png" alt="Kyl Dev Logo" class="logo-img">
                 <span class="logo-text">Kyl.<span>Dev</span></span>
             </a>
+
+            <!-- Nút bấm Hamburger Menu trên điện thoại -->
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -42,7 +52,7 @@
                     <h2 class="typing-wrap">
                         <span class="typed-text"></span><span class="cursor">|</span>
                     </h2>
-                <p class="hero-desc">I build practical digital solutions across web, mobile, and network infrastructure while continually strengthening my technical and professional skills.</p>
+                    <p class="hero-desc">I build practical digital solutions across web, mobile, and network infrastructure while continually strengthening my technical and professional skills.</p>
                     <div class="hero-highlights">
                         <span>⚡ Web & Mobile</span>
                         <span>🧠 Clean Architecture</span>
@@ -262,21 +272,22 @@
                         <a href="https://github.com/khongtenpro1111-cpu">💻 GitHub: khongtenpro1111-cpu</a>
                     </div>
                 </article>
-               <form class="contact-form" id="contact-form" action="https://formspree.io/f/xojgaojd" method="POST">
-                 <label>
-                     <span class="label-name">Tên</span>
-                     <input type="text" name="name" placeholder="Tên của bạn" required>
-                 </label>
-                  <label>
-                     <span class="label-email">Email</span>
-                     <input type="email" name="_replyto" placeholder="you@example.com" required>
-                 </label>
-                  <label>
-                     <span class="label-message">Tin nhắn</span>
-                       <textarea rows="5" name="message" placeholder="Hãy chia sẻ về ý tưởng của bạn..." required></textarea>
-                 </label>
-                      <button type="submit" class="btn btn--small">Gửi Tin Nhắn</button>
-                      <p class="form-status" id="form-status" aria-live="polite"></p>
+                <!-- Form liên hệ trỏ về link formspree đã được kích hoạt thành công của anh -->
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xojgaojd" method="POST">
+                    <label>
+                        <span class="label-name">Tên</span>
+                        <input type="text" name="name" placeholder="Tên của bạn" required>
+                    </label>
+                    <label>
+                        <span class="label-email">Email</span>
+                        <input type="email" name="_replyto" placeholder="you@example.com" required>
+                    </label>
+                    <label>
+                        <span class="label-message">Tin nhắn</span>
+                        <textarea rows="5" name="message" placeholder="Hãy chia sẻ về ý tưởng của bạn..." required></textarea>
+                    </label>
+                    <button type="submit" class="btn btn--small">Gửi Tin Nhắn</button>
+                    <p class="form-status" id="form-status" aria-live="polite"></p>
                 </form>
             </div>
         </section>

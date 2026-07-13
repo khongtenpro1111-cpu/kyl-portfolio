@@ -232,6 +232,11 @@ body.light-theme .lang-toggle {
     border-color: var(--main-color);
 }
 
+/* Ẩn nút Hamburger menu mặc định trên desktop */
+.menu-toggle {
+    display: none;
+}
+
 main {
     width: 100%;
 }
@@ -852,17 +857,103 @@ body.light-theme .contact {
     }
 }
 
+/* ============ Cấu hình Responsive cho giao diện Mobile (Dưới 768px) ============ */
 @media (max-width: 768px) {
+    /* Đã sửa: Phủ nền đen đặc cho header trên mobile, triệt tiêu độ mờ để che khuất nội dung cuộn bên dưới */
     header {
         padding: 0.85rem 5%;
+        background: #050816 !important;
+        backdrop-filter: none;
+        z-index: 1000;
+        width: 100%;
+        max-width: 100vw; /* Giới hạn tuyệt đối không cho header tràn chiều rộng */
     }
 
+    body.light-theme header {
+        background: #ffffff !important;
+    }
+
+    /* Tự động căn chỉnh bằng Flexbox thông minh, tự động xuống hàng các nút nếu màn hình quá hẹp */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Tự động xuống hàng các nút nếu chiều rộng màn hình không đủ */
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    /* Tạo kiểu dáng cho nút Hamburger menu 3 gạch */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 1.6rem;
+        height: 1.2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        order: 1; /* Đảm bảo nút menu luôn xếp cuối cùng ở bên phải */
+    }
+
+    .menu-bar {
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    /* Hiệu ứng hoạt họa xoay nút 3 gạch thành dấu X */
+    .menu-toggle.active .menu-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.active .menu-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .menu-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Gom nhóm nút Theme và nút Ngôn ngữ gọn gàng */
+    .theme-toggle, .lang-toggle {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    /* Biến đổi thanh điều hướng thành Menu đổ xuống đặc, nâng z-index tối đa để đè hoàn toàn nội dung */
     nav ul {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw; /* Khít hoàn toàn theo chiều rộng màn hình thiết bị */
+        max-width: 100%;
+        background: #050816;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem 5%;
+        gap: 1.5rem;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        z-index: 99999;
+    }
+
+    body.light-theme nav ul {
+        background: #ffffff;
+    }
+
+    /* Hiển thị Menu khi được kích hoạt class active từ JS */
+    nav ul.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .hero {
-        padding: 7rem 5% 4rem;
+        padding: 8rem 5% 4rem;
     }
 
     section {

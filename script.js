@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#contact-form');
     const formStatus = document.querySelector('#form-status');
     const backToTop = document.querySelector('#back-to-top');
-    const heroPara = document.querySelector('.hero-desc'); // Biến toàn cục trỏ đúng class của anh[cite: 4]
+    const heroPara = document.querySelector('.hero-desc');
     
     // Object dịch thuật chi tiết 100% cho toàn bộ trang web
     const translations = {
@@ -249,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const h1 = document.querySelector('.hero-content h1');
         if (h1) h1.textContent = t.hiName;
 
-        // ĐÃ SỬA: Sử dụng trực tiếp biến toàn cục heroPara đã khai báo ở đầu file để thay đổi văn bản mô tả chính xác
         if (heroPara) heroPara.textContent = t.heroParagraph;
 
         const highlights = document.querySelectorAll('.hero-highlights span');
@@ -260,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const exploreBtn = document.querySelector('.hero-content .btn');
         if (exploreBtn) exploreBtn.textContent = t.exploreBtn;
 
-        // 3. Hero Visual Card (Khắc phục phần card bên phải)
+        // 3. Hero Visual Card
         const visualCard = document.querySelector('.hero-card');
         if (visualCard) {
             const label = visualCard.querySelector('.hero-card__label');
@@ -321,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (desc) desc.textContent = t.eduDesc;
         }
 
-        // 8. Technical Skills Cards (Quét và dịch động danh sách kỹ năng)
+        // 8. Technical Skills Cards
         const skillCards = document.querySelectorAll('#skills .skill-card');
         t.skillCategories.forEach((cat, index) => {
             if (skillCards[index]) {
@@ -333,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 9. Projects Cards (Dịch chi tiết thông tin dự án + giải thưởng)
+        // 9. Projects Cards
         const projCards = document.querySelectorAll('#projects .project-card');
         t.projectList.forEach((proj, index) => {
             if (projCards[index]) {
@@ -343,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const pElements = projCards[index].querySelectorAll('p');
                 if (pElements.length > 1 && proj.achieve) {
-                    pElements[1].innerHTML = proj.achieve; // Hỗ trợ thẻ strong giải thưởng
+                    pElements[1].innerHTML = proj.achieve;
                     if (pElements[2]) pElements[2].textContent = proj.desc;
                 } else if (pElements[1]) {
                     pElements[1].textContent = proj.desc;
@@ -392,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (footerText) footerText.innerHTML = t.footer;
     }
 
-    // Khởi chạy ngôn ngữ mặc định
     applyLanguage(currentLang);
 
     // ============ Typing Effect ============
@@ -458,10 +456,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('portfolio-theme', theme);
     }
 
-// ============ Form Handling (Gửi qua Formspree API) ============
+    // ============ Form Handling (Gửi ngầm qua Formspree API) ============
     if (form && formStatus) {
         form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Mở lại dòng này để chặn việc load/chuyển hướng trang mặc định
+            event.preventDefault(); 
             
             const url = form.action;
             const formData = new FormData(form);
@@ -482,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ? 'Thanks! Your message has been sent successfully.'
                         : 'Cảm ơn anh! Tin nhắn đã được gửi thẳng về Gmail của Kyl rồi nhé.';
                     formStatus.style.color = '#10b981';
-                    form.reset(); // Xóa dữ liệu cũ để sẵn sàng nhận lượt nhập mới[cite: 4]
+                    form.reset(); 
                 } else {
                     throw new Error('Gửi mail thất bại');
                 }
@@ -517,6 +515,30 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+    }
+
+    // ============ Mobile Menu Handling (Đóng/Mở Hamburger Menu) ============
+    const menuToggle = document.querySelector('#menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            const isOpen = menuToggle.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Tự động đóng menu khi chọn link điều hướng
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
