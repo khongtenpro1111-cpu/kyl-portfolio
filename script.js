@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eduTag: 'Education',
             eduTitle: 'University journey and academic growth',
             eduSchool: 'Nguyen Tat Thanh University (NTTU)',
-            eduMajor: 'Software Engineering (IT) — 2nd Year Student',
+            eduMajor: 'Information Technology Engineering (IT) — 2nd Year Student',
             eduDesc: 'Actively mastering Digital Capabilities, Open Educational Resources (OER) for optimized research, and practicing Academic English with IELTS orientation.',
             
             // Skills Section
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eduTag: 'Học vấn',
             eduTitle: 'Hành trình đại học và phát triển học thuật',
             eduSchool: 'Trường Đại học Nguyễn Tất Thành (NTTU)',
-            eduMajor: 'Kỹ thuật Phần mềm (CNTT) — Sinh viên Năm 2',
+            eduMajor: 'Kỹ thuật Công Nghệ Thông Tin (CNTT) — Sinh viên Năm 2',
             eduDesc: 'Chủ động trau dồi Năng lực số, Khai thác tài nguyên giáo dục mở (OER) để tối ưu nghiên cứu và rèn luyện Tiếng Anh học thuật theo định hướng IELTS.',
             
             // Skills Section
