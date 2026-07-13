@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cleanArch: '🧠 Clean Architecture',
             fastLearning: '🚀 Fast Learning',
             exploreBtn: 'Explore My Work',
+            contact: 'Contact',
             
             // Hero Visual Card
             currentBuilding: 'Currently building',
@@ -125,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cleanArch: '🧠 Kiến trúc sạch (Clean)',
             fastLearning: '🚀 Học hỏi nhanh',
             exploreBtn: 'Khám phá dự án',
+            contact: 'Liên hệ',
             
             // Hero Visual Card
             currentBuilding: 'Đang triển khai',
@@ -236,9 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyLanguage(lang) {
         const t = translations[lang];
 
-        // 1. Menu Nav Links
+        // 1. Menu Nav Links (Đã thêm mục 'contact' vào cuối mảng)
         document.querySelectorAll('nav ul li a').forEach((link, index) => {
-            const keys = ['home', 'about', 'education', 'skills', 'projects', 'softSkills'];
+            const keys = ['home', 'about', 'education', 'skills', 'projects', 'softSkills', 'contact'];
             if (keys[index]) link.textContent = t[keys[index]];
         });
 
